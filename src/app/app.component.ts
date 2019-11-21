@@ -33,7 +33,5 @@ export class AppComponent implements OnInit {
     this.cityList = _.filter(this.allData, function(d) {
       return d['State'] === state;
     });
-
-    this.cityList = this.cityList.slice(0, 2);
   }
 }
