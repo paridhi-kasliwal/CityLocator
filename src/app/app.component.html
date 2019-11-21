@@ -1,6 +1,6 @@
-<h1>City Locator</h1>
+<h1 class="title">City Locator</h1>
 
-<div class="row">
+<div class="row dropdown">
   <div ngbDropdown class="d-inline-block">
     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{currentState}}</button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -8,12 +8,17 @@
     </div>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-6"><h4>City</h4></div>
-  <div class="col-6"><h4>Map</h4></div>
+<hr class="border-black">
+<div *ngIf="cityList.length === 0">
+  Please select state from dropdown
 </div>
-<div class="row" *ngFor="let c of cityList">
-  <div class="col-6">{{c.City}}</div>
-  <div class="col-6" #mapWrapper id="map" style="height: 300px; width: 500px;"></div>
+<div class="container" *ngIf="cityList.length > 0">
+  <div class="row">
+    <div class="col-6"><h4>City</h4></div>
+    <div class="col-6"><h4>Map</h4></div>
+  </div>
+  <div class="row col-border" *ngFor="let c of cityList">
+    <div class="col-6">{{c.City}}</div>
+    <app-map class="col-6" [city]='c.City'></app-map>
+  </div>
 </div>
